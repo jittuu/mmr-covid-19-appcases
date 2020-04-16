@@ -21,7 +21,7 @@
       #version {
         font-family: monospace;
         font-size: 8;
-        color: grey; 
+        color: grey;
       }
     </style>
   </head>
@@ -74,7 +74,9 @@
         };
 
         const findConnectedNodes = (id, curNodes) => {
-          curNodes.push(id);
+          if (curNodes.indexOf(id) < 0) {
+            curNodes.push(id);
+          }
 
           const linkedNodeIds = data.links
             .filter((l) => l.source === id || l.target === id)
@@ -102,9 +104,9 @@
               d3
                 .forceLink(links)
                 .id((d) => d.id)
-                .distance(50),
+                .distance(100),
             )
-            .force('charge', d3.forceManyBody().strength(-80))
+            .force('charge', d3.forceManyBody().strength(-100))
             .force('x', d3.forceX())
             .force('y', d3.forceY());
 
@@ -210,6 +212,6 @@
         document.getElementById('root').append(svg);
       }
     </script>
-    <span id="version">v2</span>
+    <span id="version">v3</span>
   </body>
 </html>
