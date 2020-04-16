@@ -30,11 +30,11 @@
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <script>
       const dataLoaded = setInterval(function () {
-        if (window.data) {
+        if (window.data && window.nodes && window.data.nodes.length > 0) {
           clearInterval(dataLoaded);
           main();
         }
-      }, 200);
+      }, 300);
 
       function main() {
         const data = window.data;
@@ -212,6 +212,6 @@
         document.getElementById('root').append(svg);
       }
     </script>
-    <span id="version">v3</span>
+    <span id="version">v4</span>
   </body>
 </html>
