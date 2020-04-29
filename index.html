@@ -127,7 +127,9 @@
             .data(nodes)
             .join("circle")
             .attr("r", 15)
-            .attr("fill", (d) => (Number.isInteger(d.id) ? fcolor : "#c7bbbb"))
+            .attr("fill", (d) =>
+              d.imported && d.imported === "Y" ? "#f28e2c" : fcolor
+            )
             .call(drag(simulation));
 
           var zoom_handler = d3.zoom().on("zoom", zoom_actions);
@@ -197,6 +199,7 @@
           function zoom_actions() {
             g.attr("transform", d3.event.transform);
           }
+
           return svg.node();
         };
 
@@ -207,6 +210,6 @@
       window.ReactNativeWebView &&
         window.ReactNativeWebView.postMessage("ready");
     </script>
-    <span id="version">v5</span>
+    <span id="version">v6</span>
   </body>
 </html>
